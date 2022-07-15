@@ -16,7 +16,7 @@ def getImages (APPS) {
 pipeline {
     agent any
     environment {
-           CREDS= 'ssh_for_jenkins'
+           CREDS= 'ssh_key'
     //     VDS_TOKEN     = credentials('clo')
 
     //

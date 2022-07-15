@@ -1,6 +1,6 @@
 ---
-- name: Test ping host all
-  hosts: all
+- name: Test ping host robo
+  hosts: robo
   #become: yes
   gather_facts: yes
   tasks:
@@ -25,8 +25,8 @@
       state: present
       line: 'export PATH=$PATH:/opt/node-v16.13.2-linux-x64/bin'
 
-  # - name: Unconditionally reboot the machine with all defaults
-  #   ansible.builtin.reboot:
+  - name: Unconditionally reboot the machine with all defaults
+    ansible.builtin.reboot:
 
   - name: Nodejs version
     shell:  "/opt/node-v16.13.2-linux-x64/bin/node --version"

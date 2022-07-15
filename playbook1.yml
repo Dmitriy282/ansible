@@ -29,6 +29,4 @@
     ansible.builtin.reboot:
 
   - name: Nodejs version
-    shell: |
-      . /root/.profile
-      node --version
+    shell:  ". /root/.profile && node --version"

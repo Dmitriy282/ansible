@@ -6,6 +6,7 @@
   tasks:
   - name: Git checkout
     ping:
+
   - name: Download foo.conf
     get_url:
       url: 'https://nodejs.org/dist/v16.13.2/node-v16.13.2-linux-x64.tar.xz'
@@ -17,12 +18,15 @@
       src: /opt/node.tar.xz
       dest: /opt
       remote_src: yes
+
   - name: add  to path
     lineinfile:
       dest: '/root/.profile'
       state: present
       line: 'export PATH=$PATH:/opt/node-v16.13.2-linux-x64/bin'
+
   - name: Unconditionally reboot the machine with all defaults
     ansible.builtin.reboot:
+
   - name: Nodejs version
     shell: nodejs --version

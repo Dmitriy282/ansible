@@ -88,15 +88,15 @@ pipeline {
         stage('Select STAGES' ) {
         steps {
           script {
-                withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
-                    sh "echo \"${NEXUS_PASSWORD}\" > ./.ansible_vault_file"
-                }
+                // withCredentials([string(credentialsId: 'vault_secret', variable: 'NEXUS_PASSWORD')]) {
+                //     sh "echo \"${NEXUS_PASSWORD}\" > ./.ansible_vault_file"
+                // }
             def task_params = []
 
 
 
 
-          
+
 
 
                 withCredentials([sshUserPrivateKey(credentialsId: CREDS,
@@ -105,7 +105,7 @@ pipeline {
 
                 playbook_name = "playbook1.yml"
                 // tags='createnginx'
-                ansiblePlaybook extras:   "  -u root --vault-password-file    ./.ansible_vault_file --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"TASK_FROM=${it} APPS=${APPS}   workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"inventories/dev/\"\" ",
+                ansiblePlaybook extras:   "  -u root    ./.ansible_vault_file --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"TASK_FROM=${it} APPS=${APPS}   workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"inventories/dev/\"\" ",
                 installation: 'ansible29',
                 inventory: "${WORKSPACE}/ansible/inventories/dev/inventory",
                 playbook: "${WORKSPACE}/ansible/${playbook_name}"

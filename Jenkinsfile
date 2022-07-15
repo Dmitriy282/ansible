@@ -108,8 +108,8 @@ pipeline {
                  // tags='createnginx'
                  ansiblePlaybook extras:   "  -u root  --private-key ${JENKINS_PRIVATE_KEY} -vv --extra-vars  \"workspace=${WORKSPACE}   ssh_key=${JENKINS_PRIVATE_KEY} inventory_dir=\"inventories/dev/\"\" ",
                  installation: 'ansible29',
-                 inventory: "${WORKSPACE}/ansible/inventories/dev/inventory",
-                 playbook: "${WORKSPACE}/ansible/${playbook_name}"
+                 inventory: "${WORKSPACE}/inventories/dev/inventory",
+                 playbook: "${WORKSPACE}/${playbook_name}"
 
 
 
